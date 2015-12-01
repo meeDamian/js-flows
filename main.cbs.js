@@ -7,13 +7,11 @@ window.versions['cbs'] = (function() {
   function download(path, cb) {
     var req = new XMLHttpRequest();
 
-    req.onreadystatechange = function() {
-      if (req.readyState == 4) {
-        if (req.status !== 200)
-          return cb(2);
+    req.onload = function() {
+      if (req.status !== 200)
+        return cb(2);
 
-        cb(null, req.responseText);
-      }
+      cb(null, req.responseText);
     };
 
     req.open('GET', path);
