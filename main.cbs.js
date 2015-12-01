@@ -9,9 +9,13 @@ window.versions['cbs'] = (function() {
 
     req.onload = function() {
       if (req.status !== 200)
-        return cb(2);
+        return cb(Error(req.statusText));
 
       cb(null, req.responseText);
+    };
+
+    req.onerror = function() {
+      cb(Error('Network Error'));
     };
 
     req.open('GET', path);
