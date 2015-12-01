@@ -1,4 +1,4 @@
-window.versions['es6'] = (function() {
+window.versions['yield'] = (function() {
 
   return function(div) {
     console.log('TO BE IMPLEMENTED...');

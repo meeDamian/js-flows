@@ -1,4 +1,4 @@
-window.versions['promises'] = (function() {
+window.versions['promise'] = (function() {
   'use strict';
 
   // NOTE: `XMLHttpRequest` must be manually wrapped with a Promise (for now?)
@@ -12,7 +12,7 @@ window.versions['promises'] = (function() {
         else
           reject(Error(req.statusText));
       };
-      req.onerror = () => reject(Error('Network Error')); 
+      req.onerror = () => reject(Error('Network Error'));
 
       req.send();
     });
@@ -31,7 +31,10 @@ window.versions['promises'] = (function() {
 
     download(SPEC.file)
       .then(JSON.parse)                         // (plaintext => JSON) on response
-      .catch((err) => console.error(err))       // catch error, to stop it from propagating deeper
+      .catch((err) => {
+        console.error('list DL failed', err);   // catch error, to stop it from propagating deeper
+        return null;
+
       .then(list => {                           // when list downloaded
         return list
           .map(download)                        // create promise for each list item

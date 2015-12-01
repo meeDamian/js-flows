@@ -3,8 +3,6 @@ window.versions['cbs'] = (function() {
   'use strict';
 
   // TODO: Add comments
-  // TODO: de-retardize
-  // TODO: make compliant with #3 axiom
 
   function download(path, cb) {
     var req = new XMLHttpRequest();
@@ -24,14 +22,15 @@ window.versions['cbs'] = (function() {
     req.send();
   }
 
-  function prepareHtml(arr) {
-    return arr.join('\n');
-  }
-
   return function(div) {
+    function complete(html) {
+      div.innerHTML = html;
+    }
+
     download(SPEC.file, function(error, content) {
       if (error) {
-        console.error(error);
+        console.error('list DL failed', error);
+        complete('list DL failed')
         return;
       }
 
@@ -40,19 +39,18 @@ window.versions['cbs'] = (function() {
 
       list.forEach(function(path, i) {
         download(path, function(error, content) {
-          if (error)
+          i++;
+          if (error) {
+            console.error('file(' + i + ') DL failed');
             content = SPEC.errorContent;
+          }
 
-          results.push(SPEC.getHtml(i + 1, content));
+          results.push(SPEC.getHtml(i, content));
 
           if (results.length === list.length)
-            complete(prepareHtml(results));
+            complete(results.join('\n'));
         });
       });
-
-      function complete(html) {
-        div.innerHTML = html;
-      }
     });
   };
 })();
