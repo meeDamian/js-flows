@@ -1,0 +1,41 @@
+<!doctype html><html class="no-js" lang="en"><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="google" content="notranslate" /><title>Pineapple</title>
+
+
+  <!-- SETUP SCRIPT -->
+  <script>
+    'use strict';
+
+    window.SPEC = {
+      file:         'list.json',
+      template:     '<p><strong>%d.</strong>&nbsp;%s</p>',
+      errorContent: '(download failed)',
+
+      getHtml: function(i, txt) {
+        return SPEC.template
+          .replace(/%d/, i)
+          .replace(/%s/, txt)
+      }
+    };
+    window.versions = {};
+    window.execute = function execute(version) {
+      if (version in window.versions) {
+        var container = document.getElementById('container');
+        container.innerHTML = "";
+        window.versions[version](container);
+      }
+    };
+  </script>
+
+
+  <!-- Different implementations -->
+  <script src="main.sync.js"></script>
+  <script src="main.cbs.js"></script>
+  <script src="main.promises.js"></script>
+
+</head><body>
+
+
+  <div id="container"></div>
+
+
+</body></html>
