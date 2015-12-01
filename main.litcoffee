@@ -10,5 +10,5 @@ this function is exported as `litcoffee` in `versions` object in a global namesp
 
 #### Not yet implemented
 
-      console.log 'TO BE IMPLEMENTED...'
-      div.innerHTML = 'not yet implemented'
+      console.log 'litcoffee TO BE IMPLEMENTED...'
+      div.innerHTML = 'litcoffee not yet implemented'
