@@ -7,7 +7,6 @@ The same behavior implemented in different _"flavors"_ of JavaScript.
 Each implementation:
 1. exposes one function that takes one argument `div` - a reference to DOM node to be populated.
 1. populates `div` with contents of files listed in `data/list.json` proxied through `SPEC.getHtml()` function
-1. elements must be appended as soon as they arriveś
 
 ```coffeescript
 ## pseudocode ##
