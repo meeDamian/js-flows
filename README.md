@@ -13,7 +13,7 @@ The same behavior implemented in different _"flavors"_ of JavaScript.
 
 * [JavaScript (es5, sync)][js_sync]
 * <small>**[WIP]**</small> [JavaScript (es5, callbacks)][js_cbs]
-* <small>**[WIP]**</small> [JavaScript (es5, promises)][js_promises]
+* [JavaScript (es5, promises)][js_promises]
 * <small>**[WIP]**</small> [JavaScript (es6, +yield)][js_es6]
 * <small>**[WIP]**</small> [JavaScript (es7, +async, +await)][js_es7]
 * <small>**[WIP]**</small> [CoffeeScript][cs]
