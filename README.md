@@ -4,10 +4,29 @@ The same behavior implemented in different _"flavors"_ of JavaScript.
 
 #### Behavior
 
-1. Download `data/list.json`,
-1. Download all files listed in it,
-1. Add contents of all files to `#container` in separate `<p>`<small>s</small>,
-1. return `(download failed)` for a file that fails to DL.
+Each implementation:
+1. exposes one function that takes one argument `div` - a reference to DOM node to be populated.
+1. populates `div` with contents of files listed in `data/list.json` proxied through `SPEC.getHtml()` function
+1. elements must be appended as soon as they arriveś
+
+```coffeescript
+## pseudocode ##
+execute = (div) =>
+  list = download('data/list.json')
+  if error
+    console.error('list DL failed', error)
+    div.innerHTML = 'list DL failed'
+    return
+
+  # must keep list.json order
+  for(index, fileContent of list)
+    if error
+      console.error("file(#{index}) DL failed", error)
+      div.innerHTML += SPEC.getHtml i, SPEC.errorContent
+
+    else
+      div.innerHTML += SPEC.getHtml i, fileContent
+```
 
 #### Implementations
 
