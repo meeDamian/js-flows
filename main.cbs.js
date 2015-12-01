@@ -3,6 +3,8 @@ window.versions['cbs'] = (function() {
   'use strict';
 
   // TODO: Add comments
+  // TODO: de-retardize
+  // TODO: make compliant with #3 axiom
 
   function download(path, cb) {
     var req = new XMLHttpRequest();
