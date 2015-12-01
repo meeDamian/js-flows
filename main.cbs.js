@@ -2,6 +2,7 @@
 window.versions['cbs'] = (function() {
   'use strict';
 
+  // TODO: chunks order is not guaranteed
   // TODO: Add comments
 
   function download(path, cb) {

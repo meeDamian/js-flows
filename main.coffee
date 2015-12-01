@@ -2,6 +2,7 @@
 # NOTE: Outer wrapper is added by the compiler
 
 # TODO: chunks order is still NOT guaranteed
+# TODO: Add comments
 
 download = (path, cb) ->
   req = new XMLHttpRequest()
