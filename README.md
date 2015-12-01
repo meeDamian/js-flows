@@ -14,26 +14,28 @@ Each implementation:
 execute = (div) =>
   list = download('data/list.json')
   if error
-    console.error('list DL failed', error)
+    console.error('list DL failed', error¹)
     div.innerHTML = 'list DL failed'
     return
 
   # must keep list.json order
   for(index, fileContent of list)
     if error
-      console.error("file(#{index}) DL failed", error)
+      console.error("file(#{index}) DL failed", error¹)
       div.innerHTML += SPEC.getHtml i, SPEC.errorContent
 
     else
       div.innerHTML += SPEC.getHtml i, fileContent
+
+# ¹ - optional
 ```
 
 #### Implementations
 
 * [JavaScript (es5, sync)][js_sync]
 * <small>**[WIP]**</small> [JavaScript (es5, callbacks)][js_cbs]
-* [JavaScript (es5, promises)][js_promises]
-* <small>**[WIP]**</small> [JavaScript (es6, +yield)][js_es6]
+* [JavaScript (es6, +promise)][js_promise]
+* <small>**[WIP]**</small> [JavaScript (es6, +yield)][js_yield]
 * <small>**[WIP]**</small> [JavaScript (es7, +async, +await)][js_es7]
 * <small>**[WIP]**</small> [CoffeeScript][cs]
 * <small>**[WIP]**</small> [Iced CoffeeScript][ics]
@@ -53,8 +55,8 @@ Go to https://meedamian.com/js-diversity
 
 [js_sync]: main.sync.js
 [js_cbs]: main.cbs.js
-[js_promises]: main.promises.js
-[js_es6]: main.es6
+[js_promise]: main.promise.es6
+[js_yield]: main.yield.es6
 [js_es7]: js.es7.js
 [cs]: main.coffee
 [ics]: main.iced
