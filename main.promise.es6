@@ -31,20 +31,23 @@ window.versions['promise'] = (function() {
 
     download(SPEC.file)
       .then(JSON.parse)                         // (plaintext => JSON) on response
-      .catch((err) => {
-        console.error('list DL failed', err);   // catch error, to stop it from propagating deeper
-        return null;
-
       .then(list => {                           // when list downloaded
         return list
           .map(download)                        // create promise for each list item
-          .reduce((chain, promise) => {
+          .reduce((chain, promise, i) => {
             return chain
               .then(() => promise)              // add next promise to chain
-              .catch(err => SPEC.errorContent)  // if error, fake response
+              .catch(err => {
+                console.error('file(' + (i+1) + ') DL failed', err);
+                return SPEC.errorContent        // fake response
+              })
               .then(addToHtml);                 // finally, add to HTML
 
           }, Promise.resolve());
+      })
+      .catch(err => {
+        console.error('list DL failed', err);
+        div.innerHTML = 'list DL failed';
       });
   };
 })();
