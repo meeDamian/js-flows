@@ -1,4 +1,4 @@
-# JS DIVERSITY
+# JavaScript Flows
 
 The same behavior implemented in different _"flavors"_ of JavaScript.
 
