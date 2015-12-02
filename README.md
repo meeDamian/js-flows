@@ -47,8 +47,8 @@ Go to https://meedamian.com/js-flows
 
 ### Run Locally
 
-    $ git clone git@github.com:chester1000/js-diversity.git
-    $ cd js-diversity
+    $ git clone git@github.com:chester1000/js-flows.git
+    $ cd js-flows
     $ python -m SimpleHTTPServer 8008
 
     # In browser open http://localhost:8008
