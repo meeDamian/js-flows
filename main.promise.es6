@@ -1,7 +1,7 @@
 window.versions['promise'] = (function() {
   'use strict';
 
-  // NOTE: Currently `XMLHttpRequest` must be manually wrapped in a Promise
+  // Promise-style XMLHttpRequest wrapper
   function download(path) {
     return new Promise((resolve, reject) => {
       let req = new XMLHttpRequest();
@@ -23,27 +23,27 @@ window.versions['promise'] = (function() {
     div.innerHTML += SPEC.getHtml(i, text);
   };
 
-  // [exposed] takes DOM element and fills it with content
+  // EXPOSED
   return function(div) {
     let addToHtml = appendTo(div);
 
-    download(SPEC.file)                         // download the list
-      .then(JSON.parse)                         // (plaintext => JSON) on response
-      .then(list => {                           // when list downloaded
+    download(SPEC.file)
+      .then(JSON.parse)
+      .then(list => {
         return list
-          .map(download)                        // create promise for each list item
+          .map(download)
           .reduce((chain, promise, i) => {
             return chain
-              .then(() => promise)              // append next promise to chain
+              .then(() => promise)
               .catch(err => {
                 console.error('file(' + (i+1) + ') DL failed', err);
-                return SPEC.errorContent        // fake response
+                return SPEC.errorContent
               })
-              .then(addToHtml(i+1));            // finally, add to HTML
+              .then(addToHtml(i+1));
 
-          }, Promise.resolve());                // first, empty promise
+          }, Promise.resolve());
       })
-      .catch(err => {                           // catch list download failure
+      .catch(err => {
         console.error('list DL failed', err);
         div.innerHTML = 'list DL failed';
       });

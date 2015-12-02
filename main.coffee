@@ -1,10 +1,9 @@
 # NOTE: Outer wrapper is added by the compiler
-
 'use strict'
 
 # TODO: chunks order is still NOT guaranteed
-# TODO: Add comments
 
+# Callback-style XMLHttpRequest wrapper
 download = (path, cb) ->
   req = new XMLHttpRequest()
   req.onload = ->
@@ -30,7 +29,8 @@ obtainFile = (cb) -> (path, i) ->
     return cb null, i if err
     cb res, i
 
-exportable = (div) ->
+# EXPOSED
+window.versions['coffee'] = (div) ->
   complete = (html) ->
     div.innerHTML = html
 
@@ -50,5 +50,3 @@ exportable = (div) ->
 
       if list.length is results.length
         complete results.join '\n'
-
-window.versions['coffee'] = exportable

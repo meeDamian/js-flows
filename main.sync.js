@@ -1,7 +1,8 @@
-// Evil ES5 version making all request synchronously
 window.versions['sync'] = (function() {
 
-  // Download *SYNC*
+  // WARN: DO NOT write code like this!
+
+  // Synchronous XMLHttpRequest wrapper
   function download(path) {
     var req = new XMLHttpRequest();
     req.open('GET', path, false);
@@ -12,13 +13,12 @@ window.versions['sync'] = (function() {
       : null;
   }
 
-  // Stiches downloaded chunks together and spices them with little bit of HTML
   function buildHtml(prev, content, index) {
     content = content || SPEC.errorContent;
     return prev + '\n' + SPEC.getHtml(index + 1, content);
   }
 
-  // [exposed] takes DOM element and fills it with content
+  // EXPOSED
   return function(div) {
     div.innerHTML = JSON.parse(download(SPEC.file))
       .map(download)

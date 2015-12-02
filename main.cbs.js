@@ -1,10 +1,9 @@
-// ES5 version using Callbacks
 window.versions['cbs'] = (function() {
   'use strict';
 
   // TODO: chunks order is not guaranteed
-  // TODO: Add comments
 
+  // Callback-style XMLHttpRequest wrapper
   function download(path, cb) {
     var req = new XMLHttpRequest();
 
@@ -23,6 +22,7 @@ window.versions['cbs'] = (function() {
     req.send();
   }
 
+  // EXPOSED
   return function(div) {
     function complete(html) {
       div.innerHTML = html;
