@@ -43,7 +43,7 @@ execute = (div) =>
 
 ### See online
 
-Go to https://meedamian.com/js-diversity
+Go to https://meedamian.com/js-flows
 
 ### Run Locally
 
