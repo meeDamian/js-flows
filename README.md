@@ -38,7 +38,7 @@ execute = (div) =>
 * <small>**[WIP]**</small> [JavaScript (es6, +yield)][js_yield]
 * <small>**[WIP]**</small> [JavaScript (es7, +async, +await)][js_es7]
 * [CoffeeScript][cs]
-* <small>**[WIP]**</small> [Iced CoffeeScript][ics]
+* [Iced CoffeeScript][ics]
 * <small>**[WIP]**</small> [Literate CoffeeScript][lcs]
 
 ### See online

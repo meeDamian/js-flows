@@ -1,5 +1,6 @@
-'use strict'
 # NOTE: Outer wrapper is added by the compiler
+
+'use strict'
 
 # TODO: chunks order is still NOT guaranteed
 # TODO: Add comments
