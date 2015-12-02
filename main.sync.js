@@ -1,19 +1,12 @@
 // Evil ES5 version making all request synchronously
 window.versions['sync'] = (function() {
 
-  // Artificial delay
-  function _wait() {
-    var delay = 1e7 * Math.random();
-    for (var i = 0; i < delay; i++) Math.random() * Math.random();
-  }
-
   // Download *SYNC*
   function download(path) {
     var req = new XMLHttpRequest();
     req.open('GET', path, false);
     req.send();
 
-    _wait();
     return req.status === 200
       ? req.responseText
       : null;
