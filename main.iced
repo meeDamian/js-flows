@@ -37,11 +37,14 @@ window.versions['iced'] = (div) ->
   div.innerHTML = contents
     .map (txt, i) ->
 
+      # make indexing start with 1
+      i++
+
       # notify about missing file and use a fallback value instead
       unless txt
         console.error "file(#{i}) DL failed"
         txt = SPEC.errorContent
 
       # proxy files through getHtml fn to get them in a right form
-      SPEC.getHtml i+1, txt
+      SPEC.getHtml i, txt
     .join '\n'
