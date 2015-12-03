@@ -22,10 +22,10 @@ execute = (div) =>
   for(index, fileContent of list)
     if error
       console.error("file(#{index}) DL failed", error¹)
-      div.innerHTML += SPEC.getHtml i, SPEC.errorContent
+      div.innerHTML += SPEC.getHtml(i, SPEC.errorContent)
 
     else
-      div.innerHTML += SPEC.getHtml i, fileContent
+      div.innerHTML += SPEC.getHtml(i, fileContent)
 
 # ¹ - optional
 ```
