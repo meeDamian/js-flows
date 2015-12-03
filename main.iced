@@ -1,24 +1,10 @@
 # Outer wrapper is added by the compiler
 'use strict'
 
-# Callback-style XMLHttpRequest wrapper
-download = (path, cb) ->
-  req = new XMLHttpRequest()
-  req.onload = ->
-    if req.status isnt 200
-      cb Error req.statusText
-      return
-
-    cb null, req.responseText
-
-  req.onerror = ->
-    cb Error 'Network Error'
-
-  req.open 'GET', path
-  req.send()
-
 # EXPOSED
 window.versions['iced'] = (div) ->
+  download = getDownloader 'callback'
+
   await download SPEC.file, defer err, list
   if err
     console.error 'list DL failed'

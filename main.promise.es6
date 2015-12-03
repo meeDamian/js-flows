@@ -1,23 +1,6 @@
 window.versions['promise'] = (function() {
   'use strict';
 
-  // Promise-style XMLHttpRequest wrapper
-  function download(path) {
-    return new Promise((resolve, reject) => {
-      let req = new XMLHttpRequest();
-      req.open('GET', path);
-      req.onload = () => {
-        if (req.status === 200)
-          resolve(req.response);
-        else
-          reject(Error(req.statusText));
-      };
-      req.onerror = () => reject(Error('Network Error'));
-
-      req.send();
-    });
-  }
-
   // Internal counter is fine, because order is guaranteed
   let appendTo = div => i => text => {
     div.innerHTML += SPEC.getHtml(i, text);
@@ -25,6 +8,7 @@ window.versions['promise'] = (function() {
 
   // EXPOSED
   return function(div) {
+    let download = getDownloader('promise');
     let addToHtml = appendTo(div);
 
     download(SPEC.file)

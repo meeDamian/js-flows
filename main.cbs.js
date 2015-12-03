@@ -3,27 +3,10 @@ window.versions['cbs'] = (function() {
 
   // TODO: chunks order is not guaranteed
 
-  // Callback-style XMLHttpRequest wrapper
-  function download(path, cb) {
-    var req = new XMLHttpRequest();
-
-    req.onload = function() {
-      if (req.status !== 200)
-        return cb(Error(req.statusText));
-
-      cb(null, req.responseText);
-    };
-
-    req.onerror = function() {
-      cb(Error('Network Error'));
-    };
-
-    req.open('GET', path);
-    req.send();
-  }
-
   // EXPOSED
   return function(div) {
+    var download = getDownloader('callback');
+
     function complete(html) {
       div.innerHTML = html;
     }

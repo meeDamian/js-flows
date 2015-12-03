@@ -3,21 +3,7 @@
 
 # TODO: chunks order is still NOT guaranteed
 
-# Callback-style XMLHttpRequest wrapper
-download = (path, cb) ->
-  req = new XMLHttpRequest()
-  req.onload = ->
-    if req.status isnt 200
-      cb Error req.statusText
-      return
-
-    cb null, req.responseText
-
-  req.onerror = ->
-    cb Error 'Network Error'
-
-  req.open 'GET', path
-  req.send()
+download = getDownloader 'callback'
 
 processList = (cb) -> (err, response) ->
   return cb null if err
@@ -31,6 +17,7 @@ obtainFile = (cb) -> (path, i) ->
 
 # EXPOSED
 window.versions['coffee'] = (div) ->
+
   complete = (html) ->
     div.innerHTML = html
 
