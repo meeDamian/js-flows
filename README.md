@@ -33,9 +33,9 @@ execute = (div) =>
 #### Implementations
 
 * [JavaScript (es5, sync)][js_sync]
-* <small>**[WIP]**</small> [JavaScript (es5, callbacks)][js_cbs]
+* [JavaScript (es5, callbacks)][js_cbs]
 * [JavaScript (es6, +promise)][js_promise]
-* <small>**[WIP]**</small> [JavaScript (es6, +yield)][js_yield]
+* [JavaScript (es6, +yield)][js_yield]
 * <small>**[WIP]**</small> [JavaScript (es7, +async, +await)][js_es7]
 * [CoffeeScript][cs]
 * [Iced CoffeeScript][ics]
