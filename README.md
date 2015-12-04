@@ -2,7 +2,7 @@
 
 The same behavior implemented in different _"flavors"_ of JavaScript.
 
-#### Behavior
+## Behavior
 
 Each implementation:
 
@@ -30,7 +30,7 @@ execute = (div) =>
 # ¹ - optional
 ```
 
-#### Implementations
+## Implementations
 
 * [JavaScript (es5, sync)][js_sync]
 * [JavaScript (es5, callbacks)][js_cbs]
@@ -41,11 +41,12 @@ execute = (div) =>
 * [Iced CoffeeScript][ics]
 * <small>**[WIP]**</small> [Literate CoffeeScript][lcs]
 
-### See online
+## Run
+#### Online
 
 Go to https://meedamian.com/js-flows
 
-### Run Locally
+#### Locally
 
 ```bash
 $ git clone git@github.com:chester1000/js-flows.git
@@ -55,9 +56,9 @@ $ python -m SimpleHTTPServer 8008
 # In browser open http://localhost:8008
 ```
 
-### Usage
+## Usage
 
-In Developer's Console <small>(⌘⇧J for Chrome on Mac)</small>:
+#### In Developer's Console <small>(`⌘⇧J` for Chrome on Mac)</small>:
 
 ```javascript
 // Execute specific flow:
