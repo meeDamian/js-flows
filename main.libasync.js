@@ -12,12 +12,13 @@ window.versions['libasync'] = (function() {
       }
 
       async.map(JSON.parse(list), download, function(err, results) {
-        if (err) {
-          console.log(err);
-        }
-
         div.innerHTML = results.map(function(elem, i) {
-          return SPEC.getHtml(i+1, elem || SPEC.errorContent);
+          i += 1;
+          if (!elem) {
+            elem = SPEC.errorContent;
+            console.error('file(' + i + ') DL failed');
+          }
+          return SPEC.getHtml(i, elem);
         }).join('\n');
       });
     });
