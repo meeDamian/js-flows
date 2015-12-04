@@ -4,7 +4,7 @@ window.versions['sync'] = (function() {
 
   function buildHtml(prev, content, index) {
     content = content || SPEC.errorContent;
-    return prev + '\n' + SPEC.getHtml(index + 1, content);
+    return prev + '\n' + SPEC.getHtml(content, index);
   }
 
   // EXPOSED

@@ -47,10 +47,10 @@ window.versions['yield'] = (function() {
         try {
           content = yield files[i];
         } catch(err) {
-          console.error('file(' + (i+1) + ') DL failed', err);
+          console.error('file(' + i + ') DL failed', err);
           content = SPEC.errorContent;
         }
-        div.innerHTML += SPEC.getHtml(i+1, content);
+        div.innerHTML += SPEC.getHtml(content, i);
       }
     });
   };

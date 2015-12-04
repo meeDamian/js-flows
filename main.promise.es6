@@ -3,7 +3,7 @@ window.versions['promise'] = (function() {
 
   // Internal counter is fine, because order is guaranteed
   let appendTo = div => i => text => {
-    div.innerHTML += SPEC.getHtml(i, text);
+    div.innerHTML += SPEC.getHtml(text, i);
   };
 
   // EXPOSED
@@ -20,10 +20,10 @@ window.versions['promise'] = (function() {
             return chain
               .then(() => promise)
               .catch(err => {
-                console.error('file(' + (i+1) + ') DL failed', err);
+                console.error('file(' + i + ') DL failed', err);
                 return SPEC.errorContent
               })
-              .then(addToHtml(i+1));
+              .then(addToHtml(i));
 
           }, Promise.resolve());
       })

@@ -23,13 +23,12 @@ window.versions['cbs'] = (function() {
 
       list.forEach(function(path, i) {
         download(path, function(error, content) {
-          i += 1;
           if (error) {
             console.error('file(' + i + ') DL failed');
             content = SPEC.errorContent;
           }
 
-          results.push(SPEC.getHtml(i, content));
+          results.push(SPEC.getHtml(content, i));
 
           if (results.length === list.length)
             complete(results.join('\n'));

@@ -17,11 +17,10 @@ window.versions['iced'] = (div) ->
 
   div.innerHTML = contents
     .map (txt, i) ->
-      i++
 
       unless txt
         console.error "file(#{i}) DL failed"
         txt = SPEC.errorContent
 
-      SPEC.getHtml i, txt
+      SPEC.getHtml txt, i
     .join '\n'

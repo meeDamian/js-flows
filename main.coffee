@@ -10,7 +10,6 @@ processList = (cb) -> (err, response) ->
   cb JSON.parse response
 
 obtainFile = (cb) -> (path, i) ->
-  i++
   download path, (err, res) ->
     return cb null, i if err
     cb res, i
@@ -33,7 +32,7 @@ window.versions['coffee'] = (div) ->
         console.error "file(#{i}) DL failed"
         content = SPEC.errorContent
 
-      results.push SPEC.getHtml i, content
+      results.push SPEC.getHtml content, i
 
       if list.length is results.length
         complete results.join '\n'

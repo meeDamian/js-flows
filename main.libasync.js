@@ -26,9 +26,7 @@ window.versions['libasync'] = (function() {
       }
 
       async.map(JSON.parse(list), downloadFile, function(err, results) {
-        div.innerHTML = results.map(function(elem, i) {
-          return SPEC.getHtml(i+1, elem);
-        }).join('\n');
+        div.innerHTML = results.map(SPEC.getHtml).join('\n');
       });
     });
   }

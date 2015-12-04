@@ -15,9 +15,9 @@
       template:     '<p><strong>%d.</strong>&nbsp;%s</p>',
       errorContent: '(download failed)',
 
-      getHtml: function(i, txt) {
+      getHtml: function(txt, i) {
         return SPEC.template
-          .replace(/%d/, i)
+          .replace(/%d/, i+1)
           .replace(/%s/, txt);
       }
     };
