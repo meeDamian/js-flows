@@ -1,6 +1,10 @@
 window.versions['libasync'] = (function() {
   'use strict';
 
+  let script = document.createElement('script');
+  script.src = 'async.min.js';
+  document.head.appendChild(script);
+
   return function(div) {
     var download = getDownloader('callback');
 
