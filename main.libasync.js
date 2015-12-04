@@ -11,14 +11,19 @@ window.versions['libasync'] = (function() {
         return;
       }
 
-      async.map(JSON.parse(list), download, function(err, results) {
-        div.innerHTML = results.map(function(elem, i) {
-          i += 1;
-          if (!elem) {
-            elem = SPEC.errorContent;
-            console.error('file(' + i + ') DL failed');
+      function downloadFile(file, cb) {
+        download(file, function(err, content) {
+          if (err) {
+            content = SPEC.errorContent;
+            console.error('file DL failed');
           }
-          return SPEC.getHtml(i, elem);
+          cb(null, content);
+        });
+      }
+
+      async.map(JSON.parse(list), downloadFile, function(err, results) {
+        div.innerHTML = results.map(function(elem, i) {
+          return SPEC.getHtml(i+1, elem);
         }).join('\n');
       });
     });
