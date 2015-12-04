@@ -23,7 +23,7 @@ window.versions['cbs'] = (function() {
 
       list.forEach(function(path, i) {
         download(path, function(error, content) {
-          i++;
+          i += 1;
           if (error) {
             console.error('file(' + i + ') DL failed');
             content = SPEC.errorContent;
