@@ -2,7 +2,7 @@ window.versions['libasync'] = (function() {
   'use strict';
 
   var script = document.createElement('script');
-  script.src = 'async.min.js';
+  script.src = 'lib/async.min.js';
   document.head.appendChild(script);
 
   return function(div) {
