@@ -14,13 +14,18 @@
       };
       req.onerror = () => reject(Error('Network Error'));
 
-      req.send();
+      if (!DELAY_ENABLED) {
+        req.send();
+        return;
+      }
+
+      setTimeout(() => req.send(), 3 * 1e3 * Math.random());
     });
   }
 
   // Callback-style XMLHttpRequest wrapper
   function downloadCallback(path, cb) {
-    var req = new XMLHttpRequest();
+    let req = new XMLHttpRequest();
     req.open('GET', path);
 
     req.onload = () => {
@@ -30,14 +35,25 @@
     };
     req.onerror = () => cb(Error('Network Error'));
 
-    req.send();
+    if (!DELAY_ENABLED) {
+      req.send();
+      return;
+    }
+
+    setTimeout(() => req.send(), 3 * 1e3 * Math.random());
   }
 
   // Synchronous XMLHttpRequest wrapper
   function downloadSync(path) {
-    var req = new XMLHttpRequest();
+    let req = new XMLHttpRequest();
     req.open('GET', path, false);
     req.send();
+
+    if (DELAY_ENABLED) {
+      let delay = 3 * 1e7 * Math.random();
+      for (let i = 0; i < delay; i++)
+        Math.random() * Math.random();
+    }
 
     return req.status === 200
       ? req.responseText
@@ -46,12 +62,11 @@
 
   window.getDownloader = function(type) {
     switch (type) {
-      case 'sync'     : return downloadSync;
       case 'callback' : return downloadCallback;
       case 'promise'  : return downloadPromise;
+      case 'sync'     : return downloadSync;
       default:
         console.warn(type + '-downloader not available');
     }
   }
-
 })();
