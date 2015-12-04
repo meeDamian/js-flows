@@ -1,7 +1,7 @@
 window.versions['libasync'] = (function() {
   'use strict';
 
-  let script = document.createElement('script');
+  var script = document.createElement('script');
   script.src = 'async.min.js';
   document.head.appendChild(script);
 
