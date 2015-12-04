@@ -28,8 +28,13 @@
         var container = document.getElementById('container');
         container.innerHTML = "";
         window.versions[version](container);
-      } else
-        console.log('"' + version + '" not available. Try one of:', Object.keys(versions).join(', '));
+      } else {
+        let prefix = version === 'help'
+          ? ''
+          : '"' + version + '" not available. ';
+
+        console.log(prefix + 'Try one of:', Object.keys(versions).join(', '));
+      }
     };
   </script>
 

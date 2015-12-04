@@ -47,12 +47,33 @@ Go to https://meedamian.com/js-flows
 
 ### Run Locally
 
-    $ git clone git@github.com:chester1000/js-flows.git
-    $ cd js-flows
-    $ python -m SimpleHTTPServer 8008
+```bash
+$ git clone git@github.com:chester1000/js-flows.git
+$ cd js-flows
+$ python -m SimpleHTTPServer 8008
 
-    # In browser open http://localhost:8008
+# In browser open http://localhost:8008
+```
 
+### Usage
+
+In Developer's Console <small>(⌘⇧J for Chrome on Mac)</small>:
+
+```javascript
+// Execute specific flow:
+execute('sync'); // or
+execute('iced'); // etc
+
+// See available flows:
+execute('help');
+
+// enable | disable artificial, random delay for each file download
+DELAY_ENABLED = true | false;
+```
+
+
+
+<!-- LEGEND (keep on bottom) -->
 [js_sync]: main.sync.js
 [js_cbs]: main.cbs.js
 [js_promise]: main.promise.es6
