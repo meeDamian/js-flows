@@ -11,16 +11,13 @@
     asyncAwait = true;
   }
 
-  if (asyncAwait) {
-    let script = document.createElement('script');
-    script.src = 'main.es7.js';
-    document.head.appendChild(script);
-
-  } else {
-    SPEC.register('es7', (div) => {
-      let str = '"es7" not yet supported in this browser';
-      console.log(str);
-      div.innerHTML = '<p>' + str + '</p>';
-    });
+  let src = 'main.es7.js';
+  if(!asyncAwait) {
+    src = src.replace(/\.js$/, '.babel.js');
+    console.info('Browser doesn\'t support ES7 yet. Using babel-compiled version instead.');
   }
+
+  let script = document.createElement('script');
+  script.src = src;
+  document.head.appendChild(script);
 })();

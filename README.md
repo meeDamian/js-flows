@@ -36,7 +36,7 @@ execute = (div) =>
 * [JavaScript (es5, callbacks)][js_cbs]
 * [JavaScript (es6, +promise)][js_promise]
 * [JavaScript (es6, +yield)][js_yield]
-* <small>**[WIP]**</small> [JavaScript (es7, +async, +await)][js_es7]
+* [JavaScript (es7, +async, +await)][js_es7]
 * [CoffeeScript][cs]
 * [Iced CoffeeScript][ics]
 * <small>**[WIP]**</small> [Literate CoffeeScript][lcs]
@@ -72,6 +72,23 @@ execute('help');
 DELAY_ENABLED = true | false;
 ```
 
+#### In browser
+
+Press buttons to trigger execution of flows. First button enables/disables artificial delay.
+
+
+## Notes
+
+At the time of publish no browser supported ES7 async functions, so pre-compiled fallback is provided (and loaded automatically).
+
+Babel command used:
+
+```bash
+# From repo root:
+$ npm i -g babel
+$ npm i babel-preset-stage-0
+$ babel --presets stage-0 main.es7.js -o main.es7.babel.js
+```
 
 
 <!-- LEGEND (keep on bottom) -->
