@@ -5,7 +5,7 @@ SPEC.register('libasync', (function() {
   script.src = 'lib/async.min.js';
   document.head.appendChild(script);
 
-  return function exposed(div) {
+  return function(div) {
     var download = getDownloader('callback');
 
     download(SPEC.file, function(err, list) {

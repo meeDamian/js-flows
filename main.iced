@@ -1,7 +1,7 @@
 # Outer wrapper is added by the compiler
 'use strict'
 
-exposed = (div) ->
+SPEC.register 'iced', (div) ->
   download = getDownloader 'callback'
 
   await download SPEC.file, defer err, list
@@ -22,5 +22,3 @@ exposed = (div) ->
 
       SPEC.getHtml txt, i
     .join '\n'
-
-SPEC.register 'iced', exposed

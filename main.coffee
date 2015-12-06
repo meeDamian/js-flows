@@ -14,7 +14,7 @@ obtainFile = (cb) -> (path, i) ->
     return cb null, i if err
     cb res, i
 
-exposed = (div) ->
+SPEC.register 'coffee', (div) ->
   download SPEC.file, processList (list) ->
     unless list
       console.error 'list DL failed'
@@ -31,6 +31,3 @@ exposed = (div) ->
 
       if list.length is Object.keys(results).length
         div.innerHTML = (line for _, line of results).join '\n'
-
-
-SPEC.register 'coffee', exposed

@@ -26,7 +26,7 @@ SPEC.register('yield', (function() {
     gen('next');
   }
 
-  return function exposed(div) {
+  return function(div) {
     let download = getDownloader('promise');
 
     spawn(function*() {

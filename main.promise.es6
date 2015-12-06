@@ -6,7 +6,7 @@ SPEC.register('promise', (function() {
     div.innerHTML += SPEC.getHtml(text, i);
   };
 
-  return function exposed(div) {
+  return function(div) {
     let download = getDownloader('promise');
     let addToHtml = appendTo(div);
 

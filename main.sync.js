@@ -4,7 +4,7 @@ SPEC.register('sync', (function() {
     return SPEC.getHtml(content || SPEC.errorContent, i);
   }
 
-  return function exposed(div) {
+  return function(div) {
     var download = getDownloader('sync');
 
     div.innerHTML = JSON.parse(download(SPEC.file))

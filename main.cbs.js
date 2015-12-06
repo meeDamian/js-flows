@@ -3,7 +3,7 @@ SPEC.register('cbs', (function() {
 
   // TODO: chunks order is not guaranteed
 
-  return function exposed(div) {
+  return function(div) {
     var download = getDownloader('callback');
 
     download(SPEC.file, function(error, content) {
