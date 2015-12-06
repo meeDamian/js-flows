@@ -15,25 +15,22 @@ obtainFile = (cb) -> (path, i) ->
     cb res, i
 
 exposed = (div) ->
-  complete = (html) ->
-    div.innerHTML = html
-
   download SPEC.file, processList (list) ->
     unless list
       console.error 'list DL failed'
-      complete 'list DL failed'
+      div.innerHTML = 'list DL failed'
       return
 
-    results = []
+    results = {}
     list.forEach obtainFile (content, i) ->
       unless content
         console.error "file(#{i}) DL failed"
         content = SPEC.errorContent
 
-      results.push SPEC.getHtml content, i
+      results[i] = SPEC.getHtml content, i
 
-      if list.length is results.length
-        complete results.join '\n'
+      if list.length is Object.keys(results).length
+        div.innerHTML = (line for _, line of results).join '\n'
 
 
 window.versions['coffee'] = exposed
