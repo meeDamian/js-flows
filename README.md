@@ -39,7 +39,7 @@ execute = (div) =>
 * [JavaScript (es7, +async, +await)][js_es7]
 * [CoffeeScript][cs]
 * [Iced CoffeeScript][ics]
-* <small>**[WIP]**</small> [Literate CoffeeScript][lcs]
+* [Literate CoffeeScript][lcs]
 
 ## Run
 #### Online

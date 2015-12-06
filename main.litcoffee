@@ -8,6 +8,8 @@ This implementation is identical to [Iced CoffeeScript](main.iced). The only dif
     'use strict'
     exposed = (div) ->
 
+### Download `list.json`
+
 First, get reference to the correct downloading function (in this case the one with `callbacks`) provided by [download.js](lib/download.js) file.
 
       download = getDownloader 'callback'
@@ -23,6 +25,8 @@ Gracefully handle error in case the download have failed:
         div.innerHTML = 'list DL failed'
         return
 
+### Download all other files
+
 Create array to-be-filled with results from the loop below
 
       contents = []
@@ -32,7 +36,9 @@ For each file listed in the array, fire a new download and save result into a pr
       await for file, i in JSON.parse list
         download file, defer err, contents[i]
 
-Take the array of contents and map it.
+### Show on screen
+
+Take the complete array of contents and map it.
 
       div.innerHTML = contents
         .map (txt, i) ->
@@ -48,6 +54,8 @@ Finally, return HTML-prettified text, and join the array of entries with a new l
           SPEC.getHtml txt, i
         .join '\n'
 
-Register itself to UI and user-accessible console.
+### Register...
+
+...itself to UI and user-accessible console.
 
     SPEC.register 'litcoffee', exposed
