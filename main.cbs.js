@@ -6,19 +6,15 @@ window.versions['cbs'] = (function() {
   return function exposed(div) {
     var download = getDownloader('callback');
 
-    function complete(html) {
-      div.innerHTML = html;
-    }
-
     download(SPEC.file, function(error, content) {
       if (error) {
         console.error('list DL failed', error);
-        complete('list DL failed')
+        div.innerHTML =  'list DL failed';
         return;
       }
 
       var list = JSON.parse(content);
-      var results = [];
+      var results = {};
 
       list.forEach(function(path, i) {
         download(path, function(error, content) {
@@ -27,10 +23,12 @@ window.versions['cbs'] = (function() {
             content = SPEC.errorContent;
           }
 
-          results.push(SPEC.getHtml(content, i));
+          results[i] = SPEC.getHtml(content, i);
 
-          if (results.length === list.length)
-            complete(results.join('\n'));
+          if (Object.keys(results).length === list.length)
+            div.innerHTML = Object.keys(results).map(function(key) {
+              return results[key];
+            }).join('\n');
         });
       });
     });
