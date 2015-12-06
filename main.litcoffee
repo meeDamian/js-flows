@@ -11,6 +11,6 @@ this function is exported as `litcoffee` in `versions` object in a global namesp
 #### Not yet implemented
 
       console.log 'litcoffee TO BE IMPLEMENTED...'
-      div.innerHTML = 'litcoffee not yet implemented'
+      div.innerHTML = '<p>litcoffee not yet implemented</p>'
 
     SPEC.register 'litcoffee', exposed
