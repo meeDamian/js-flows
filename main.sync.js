@@ -1,10 +1,7 @@
 SPEC.register('sync', (function() {
 
-  // WARN: DO NOT write code like this!
-
-  function buildHtml(prev, content, index) {
-    content = content || SPEC.errorContent;
-    return prev + '\n' + SPEC.getHtml(content, index);
+  function buildHtml(content, i) {
+    return SPEC.getHtml(content || SPEC.errorContent, i);
   }
 
   return function exposed(div) {
@@ -12,6 +9,7 @@ SPEC.register('sync', (function() {
 
     div.innerHTML = JSON.parse(download(SPEC.file))
       .map(download)
-      .reduce(buildHtml, '');
+      .map(buildHtml)
+      .join('\n');
   };
 })());
