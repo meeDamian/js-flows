@@ -15,5 +15,10 @@
     let script = document.createElement('script');
     script.src = 'main.es7.js';
     document.head.appendChild(script);
+
+  } else {
+    window.versions['es7'] = function() {
+      console.log('"es7" not yet supported in this browser');
+    };
   }
 })();

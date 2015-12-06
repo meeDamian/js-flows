@@ -6,8 +6,7 @@ window.versions['promise'] = (function() {
     div.innerHTML += SPEC.getHtml(text, i);
   };
 
-  // EXPOSED
-  return function(div) {
+  return function exposed(div) {
     let download = getDownloader('promise');
     let addToHtml = appendTo(div);
 

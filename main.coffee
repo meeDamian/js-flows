@@ -14,9 +14,7 @@ obtainFile = (cb) -> (path, i) ->
     return cb null, i if err
     cb res, i
 
-# EXPOSED
-window.versions['coffee'] = (div) ->
-
+exposed = (div) ->
   complete = (html) ->
     div.innerHTML = html
 
@@ -36,3 +34,6 @@ window.versions['coffee'] = (div) ->
 
       if list.length is results.length
         complete results.join '\n'
+
+
+window.versions['coffee'] = exposed

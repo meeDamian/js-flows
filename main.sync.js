@@ -7,8 +7,7 @@ window.versions['sync'] = (function() {
     return prev + '\n' + SPEC.getHtml(content, index);
   }
 
-  // EXPOSED
-  return function(div) {
+  return function exposed(div) {
     var download = getDownloader('sync');
 
     div.innerHTML = JSON.parse(download(SPEC.file))

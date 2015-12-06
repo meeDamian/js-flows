@@ -3,8 +3,7 @@ window.versions['cbs'] = (function() {
 
   // TODO: chunks order is not guaranteed
 
-  // EXPOSED
-  return function(div) {
+  return function exposed(div) {
     var download = getDownloader('callback');
 
     function complete(html) {

@@ -26,8 +26,7 @@ window.versions['yield'] = (function() {
     gen('next');
   }
 
-  // EXPOSED
-  return function(div) {
+  return function exposed(div) {
     let download = getDownloader('promise');
 
     spawn(function*() {

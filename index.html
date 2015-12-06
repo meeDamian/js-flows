@@ -24,17 +24,22 @@
     window.versions = {};
     window.DELAY_ENABLED = false;
     window.execute = function execute(version) {
+      var helpStr = 'Try one of: ' + Object.keys(versions).join(', ');
+
+      if (version === 'help') {
+        console.info(helpStr);
+        return;
+      }
+
       if (version in window.versions) {
         var container = document.getElementById('container');
         container.innerHTML = "";
-        window.versions[version](container);
-      } else {
-        let prefix = version === 'help'
-          ? ''
-          : '"' + version + '" not available. ';
-
-        console.log(prefix + 'Try one of:', Object.keys(versions).join(', '));
+        setTimeout(window.versions[version], 0, container);
+        // window.versions[version].fn(container);
+        return;
       }
+
+      console.log('"' + version + '" not available. ' + helpStr);
     };
   </script>
 

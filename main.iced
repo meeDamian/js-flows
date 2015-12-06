@@ -1,8 +1,7 @@
 # Outer wrapper is added by the compiler
 'use strict'
 
-# EXPOSED
-window.versions['iced'] = (div) ->
+exposed = (div) ->
   download = getDownloader 'callback'
 
   await download SPEC.file, defer err, list
@@ -17,10 +16,11 @@ window.versions['iced'] = (div) ->
 
   div.innerHTML = contents
     .map (txt, i) ->
-
       unless txt
         console.error "file(#{i}) DL failed"
         txt = SPEC.errorContent
 
       SPEC.getHtml txt, i
     .join '\n'
+
+window.versions['iced'] = exposed

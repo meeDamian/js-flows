@@ -5,7 +5,7 @@ window.versions['libasync'] = (function() {
   script.src = 'lib/async.min.js';
   document.head.appendChild(script);
 
-  return function(div) {
+  return function exposed(div) {
     var download = getDownloader('callback');
 
     download(SPEC.file, function(err, list) {
