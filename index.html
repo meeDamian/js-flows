@@ -57,8 +57,10 @@
         return;
       }
 
-      if (version in window.versions)
-        return run(version);
+      if (version in window.versions) {
+        run(version);
+        return;
+      }
 
       console.log('"' + version + '" not available. ' + helpStr);
     };
