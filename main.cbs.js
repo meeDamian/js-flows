@@ -1,4 +1,4 @@
-window.versions['cbs'] = (function() {
+SPEC.register('cbs', (function() {
   'use strict';
 
   // TODO: chunks order is not guaranteed
@@ -33,4 +33,4 @@ window.versions['cbs'] = (function() {
       });
     });
   };
-})();
+})());

@@ -13,4 +13,4 @@ this function is exported as `litcoffee` in `versions` object in a global namesp
       console.log 'litcoffee TO BE IMPLEMENTED...'
       div.innerHTML = 'litcoffee not yet implemented'
 
-    window.versions['litcoffee'] = exposed
+    SPEC.register 'litcoffee', exposed

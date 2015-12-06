@@ -1,4 +1,4 @@
-window.versions['promise'] = (function() {
+SPEC.register('promise', (function() {
   'use strict';
 
   // Internal counter is fine, because order is guaranteed
@@ -31,4 +31,4 @@ window.versions['promise'] = (function() {
         div.innerHTML = 'list DL failed';
       });
   };
-})();
+})());

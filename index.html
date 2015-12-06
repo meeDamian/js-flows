@@ -1,4 +1,4 @@
-<!doctype html><html class="no-js" lang="en"><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="google" content="notranslate" /><title>Pineapple</title>
+<!doctype html><html class="no-js" lang="en"><head><title>Pineapple</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="google" content="notranslate" /><script>'use strict';function _getDelayBtnLabel(val){return'delay: <b style="color:'+(val?'green">ON':'red">OFF')+'</b>';}function _setUpDelayButton(fn){var btn=document.getElementById('delay');if(!btn){var btn=document.createElement('button');btn.id='delay';btn.innerHTML=_getDelayBtnLabel(DELAY_ENABLED);btn.onclick=function(){fn();btn.innerHTML=_getDelayBtnLabel(DELAY_ENABLED);};document.getElementById('buttons').appendChild(btn);}}function _addVersionButton(name,fn){var btn=document.createElement('button');btn.innerHTML=name;btn.onclick=fn;document.getElementById('buttons').appendChild(btn);}</script>
 
   <!-- ADDS SUPPORT FOR `text/*coffeescript` TYPES -->
   <script src="lib/ics.js"></script>
@@ -10,20 +10,46 @@
   <script>
     'use strict';
 
+    // Stuff used by/available to all implementations
     window.SPEC = {
       file:         'data/list.json',
       template:     '<p><strong>%d.</strong>&nbsp;%s</p>',
       errorContent: '(download failed)',
 
+      // prettifies TEXT into HTML
       getHtml: function(txt, i) {
         return SPEC.template
           .replace(/%d/, i+1)
           .replace(/%s/, txt);
+      },
+
+      // entry point for implementations to register their exported function
+      register: function(name, fn) {
+        window.versions[name] = fn;
+        _setUpDelayButton(function() {
+          DELAY_ENABLED =! DELAY_ENABLED;
+        });
+        _addVersionButton(name, function() {
+          run(name);
+        });
       }
     };
+
+    // [internal] Dictionary halding references to implementations
     window.versions = {};
+
+    // [exposed] Global variable toggling artificial delay on download functions
     window.DELAY_ENABLED = false;
-    window.execute = function execute(version) {
+
+    // [internal] prepares stuff, and calls specified implementation
+    function run(name) {
+      var container = document.getElementById('container');
+      container.innerHTML = "";
+      setTimeout(window.versions[name], 0, container);
+    }
+
+    // [exposed] user/console accessible function
+    window.execute = function(version) {
       var helpStr = 'Try one of: ' + Object.keys(versions).join(', ');
 
       if (version === 'help') {
@@ -31,18 +57,23 @@
         return;
       }
 
-      if (version in window.versions) {
-        var container = document.getElementById('container');
-        container.innerHTML = "";
-        setTimeout(window.versions[version], 0, container);
-        return;
-      }
+      if (version in window.versions)
+        return run(version);
 
       console.log('"' + version + '" not available. ' + helpStr);
     };
   </script>
 
-  <!-- Different implementations -->
+</head><body>
+
+  <!-- container for buttons -->
+  <div id="buttons"></div>
+
+  <!-- container for implementation's processed results -->
+  <div id="container"></div>
+
+
+  <!-- Implementations imports -->
   <script src="main.sync.js"></script>
   <script src="main.cbs.js"></script>
   <script src="main.libasync.js"></script>
@@ -53,11 +84,5 @@
   <script type="text/coffeescript"          src="main.coffee"></script>
   <script type="text/coffeescript"          src="main.iced"></script>
   <script type="text/literate-coffeescript" src="main.litcoffee"></script>
-
-</head><body>
-
-
-  <div id="container"></div>
-
 
 </body></html>

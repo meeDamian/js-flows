@@ -23,4 +23,4 @@ exposed = (div) ->
       SPEC.getHtml txt, i
     .join '\n'
 
-window.versions['iced'] = exposed
+SPEC.register 'iced', exposed

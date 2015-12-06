@@ -33,4 +33,4 @@ exposed = (div) ->
         div.innerHTML = (line for _, line of results).join '\n'
 
 
-window.versions['coffee'] = exposed
+SPEC.register 'coffee', exposed

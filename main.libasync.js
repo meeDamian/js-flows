@@ -1,4 +1,4 @@
-window.versions['libasync'] = (function() {
+SPEC.register('libasync', (function() {
   'use strict';
 
   var script = document.createElement('script');
@@ -30,4 +30,4 @@ window.versions['libasync'] = (function() {
       });
     });
   }
-})();
+})());

@@ -1,4 +1,4 @@
-window.versions['sync'] = (function() {
+SPEC.register('sync', (function() {
 
   // WARN: DO NOT write code like this!
 
@@ -14,4 +14,4 @@ window.versions['sync'] = (function() {
       .map(download)
       .reduce(buildHtml, '');
   };
-})();
+})());

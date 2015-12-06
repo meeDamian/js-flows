@@ -17,8 +17,8 @@
     document.head.appendChild(script);
 
   } else {
-    window.versions['es7'] = function() {
+    SPEC.register('es7', () => {
       console.log('"es7" not yet supported in this browser');
-    };
+    });
   }
 })();

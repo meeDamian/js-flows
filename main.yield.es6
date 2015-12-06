@@ -1,4 +1,4 @@
-window.versions['yield'] = (function() {
+SPEC.register('yield', (function() {
   'use strict';
 
   // General purpose, higher level function
@@ -53,4 +53,4 @@ window.versions['yield'] = (function() {
       }
     });
   };
-})();
+})());
